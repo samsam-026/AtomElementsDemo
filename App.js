@@ -59,7 +59,7 @@ export default class App extends Component<Props> {
   }
 
   handleDateChange = (date) => {
-    console.log(date);
+    this.setState({ datePicked: date })
   }
 
 }
