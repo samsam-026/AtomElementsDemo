@@ -9,7 +9,8 @@
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import { Button, Input, TextArea, Picker, DatePicker } from "react-native-atom-elements";
+import { Button, Input, TextArea, Picker, DatePicker, FloatingButton } from "react-native-atom-elements";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -33,7 +34,9 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Click Me" onPress={this.handleButtonClick} color="#F00" rounded outline block />
+        <Button onPress={this.handleButtonClick} color="#F00" rounded outline size={"small"}>
+          <Text>Click Me</Text>
+        </Button>
         <Input onChangeText={this.handleTextChange} placeholder="Name" />
         <TextArea color="#0F0" onChangeText={this.handleTextChange} placeholder="Description" />
         <Picker color="#00F" onValueChange={this.handleValueChange} selectedValue={this.state.pickerValue}>
@@ -42,6 +45,15 @@ export default class App extends Component<Props> {
           <Picker.Item value="3" label="3" />
         </Picker>
         <DatePicker onDateChange={this.handleDateChange} color="#F0F" />
+        {/* <FloatingButton onPress={this.handleButtonClick} iconName={"share"}> */}
+        <FloatingButton>
+          <Button rounded onPress={this.handleButtonClick} color={"#0F0"}>
+            <Icon name={"logo-whatsapp"} size={18} />
+          </Button>
+          <Button rounded onPress={this.handleButtonClick} color={"#00F"}>
+            <Icon name={"logo-facebook"} size={18} />
+          </Button>
+        </FloatingButton>
       </View>
     );
   }
@@ -67,19 +79,10 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'column',
     backgroundColor: '#F5FCFF',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 20
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  }
 });
