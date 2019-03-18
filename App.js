@@ -8,8 +8,8 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, ScrollView, Alert } from 'react-native';
-import { Button, Input, TextArea, Picker, DatePicker, FloatingButton, NotificationBarManager, Notification } from "react-native-atom-elements";
+import { Platform, StyleSheet, View, ScrollView, Alert } from 'react-native';
+import { Button, Input, TextArea, Picker, DatePicker, Text, FloatingButton, NotificationBarManager, Notification } from "react-native-atom-elements";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -41,7 +41,7 @@ export default class App extends Component<Props> {
   render() {
 
     const actions = [
-      { text: 'Accessibility', icon: "help", name: 'bt_accessibility', position: 2, onPress: () => this.handleDisplayAlert("Accessibility") },
+      { text: 'Accessibility', image: require("./assets/images/accessibility.png"), name: 'bt_accessibility', position: 2, onPress: () => this.handleDisplayAlert("Accessibility") },
       { text: 'Location', icon: "pin", name: 'bt_room', position: 1, onPress: () => this.handleDisplayAlert("Location") },
       { text: 'Video', icon: "videocam", name: 'bt_videocam', position: 3, onPress: () => this.handleShowNotification() }
     ];
@@ -50,6 +50,7 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.innerContainer}>
+            <Text size={"h2"} bold >Alom Elements Demo</Text>
             <Button onPress={this.handleButtonClick} color="#F00" rounded outline size={"small"}>
               <Text>Click Me</Text>
             </Button>
@@ -68,14 +69,15 @@ export default class App extends Component<Props> {
         </ScrollView>
         <Notification ref={"alert"} />
         <FloatingButton actions={actions} />
-        {/* <FloatingButton onPress={this.handleShowNotification} /> */}
+        {/* <FloatingButton onPress={this.handleShowNotification} image={require("./assets/images/accessibility.png")} /> */}
       </View>
     );
   }
 
   handleShowNotification = () => {
     NotificationBarManager.showAlert({
-      message: 'Your alert message goes here'
+      message: 'Your alert message goes here',
+      // image: require("./assets/images/accessibility.png")
     });
   }
 
