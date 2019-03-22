@@ -70,16 +70,12 @@ export default class App extends Component {
             <Button onPress={this.handleButtonClick} color="#486c86" block>
               <Text>Click Me</Text>
             </Button>
-            {/* <Button onPress={this.handleShowNotification} color="#F00" rounded block size={"large"}>
+            <Button onPress={this.handleShowNotification} secondary rounded block>
               <Text>Show Notification</Text>
-            </Button> */}
+            </Button>
             <FormInput onChangeText={this.handleTextChange} label="Name" />
             <FormTextArea color="#0F0" onChangeText={this.handleTextChange} label="Description" />
-            <FormPicker color="#00F" onValueChange={this.handleValueChange} selectedValue={this.state.pickerValue} label="Number">
-              <Picker.Item value="1" label="1" />
-              <Picker.Item value="2" label="2" />
-              <Picker.Item value="3" label="3" />
-            </FormPicker>
+            <FormPicker color="#00F" onValueChange={this.handleValueChange} selectedValue={this.state.pickerValue} label="Number" data={this.pickerData} />
             <FormDatePicker onDateChange={this.handleDateChange} color="#F0F" label="Date" />
             <Card title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} />
             <ListItem title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} >
