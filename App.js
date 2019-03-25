@@ -13,7 +13,8 @@ import {
   Button, FormInput, FormTextArea, FormPicker, Icon, FormDatePicker, Text,
   FloatingButton, NotificationBarManager, Notification, Card, ListItem,
   CardList, ListView, Form,
-  NavBar, NavBarRight, NavBarLeft, NavBarBody, NavBarButton
+  NavBar, NavBarRight, NavBarLeft, NavBarBody, NavBarButton,
+  TabBar, TabItem
 } from "react-native-atom-elements";
 
 export default class App extends Component {
@@ -104,6 +105,24 @@ export default class App extends Component {
           <FloatingButton actions={this.actions} />
           {/* <FloatingButton onPress={this.handleShowNotification} image={require("./assets/images/accessibility.png")} /> */}
         </View>
+        <TabBar>
+          <TabItem active>
+            <Icon name="heart" />
+            <Text>Favorites</Text>
+          </TabItem>
+          <TabItem>
+            <Icon name="add" />
+            <Text>Add New</Text>
+          </TabItem>
+          <TabItem>
+            <Icon name="camera" />
+            <Text>Camera</Text>
+          </TabItem>
+          <TabItem>
+            <Icon name="settings" />
+            <Text>Settings</Text>
+          </TabItem>
+        </TabBar>
       </View>
     );
   }
