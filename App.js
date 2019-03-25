@@ -14,7 +14,7 @@ import {
   FloatingButton, NotificationBarManager, Notification, Card, ListItem,
   CardList, ListView, Form,
   NavBar, NavBarRight, NavBarLeft, NavBarBody, NavBarButton,
-  TabBar, TabItem
+  TabBar, TabItem, PillView
 } from "react-native-atom-elements";
 
 export default class App extends Component {
@@ -45,6 +45,20 @@ export default class App extends Component {
     { label: "Address", type: "textarea", onChangeText: (value) => this.handleTextChange(value) },
   ];
 
+  pillScenes = [
+    { scene: this.renderMainView() },
+    { scene: <CardList data={this.listData} /> },
+    { scene: <ListView data={this.listData} /> },
+    { scene: <View style={styles.innerContainer}><Form formElements={this.formElements} /></View> },
+  ];
+
+  pillHeaders = [
+    { title: 'Home', icon: "home" },
+    { title: 'Card List', icon: "card" },
+    { title: 'List View', icon: "list" },
+    { title: 'Form', icon: "help" }
+  ]
+
   constructor(props) {
     super(props);
     this.state = {
@@ -60,6 +74,27 @@ export default class App extends Component {
 
   componentWillUnmount() {
     NotificationBarManager.unregisterMessageBar();
+  }
+
+  renderMainView() {
+    return (
+      <View style={styles.innerContainer}>
+        <Text size={"h4"} bold >Atom Elements Demo</Text>
+        <Button onPress={this.handleButtonClick} block >
+          <Text>Click Me</Text>
+        </Button>
+        <Button onPress={this.handleShowNotification} secondary rounded block>
+          <Text>Show Notification</Text>
+        </Button>
+        <FormInput onChangeText={this.handleTextChange} label="Name" />
+        <FormTextArea color="#0F0" onChangeText={this.handleTextChange} label="Description" />
+        <FormDatePicker onDateChange={this.handleDateChange} color="#F0F" label="Date" />
+        <Card title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} />
+        <ListItem title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} >
+          <ListItem title="Heading" onPress={this.handleShowNotification} description="Description" />
+        </ListItem>
+      </View>
+    );
   }
 
   render() {
@@ -80,26 +115,7 @@ export default class App extends Component {
         </NavBar>
         <View style={styles.container}>
           <ScrollView>
-            <View style={styles.innerContainer}>
-              <Text size={"h4"} bold >Alom Elements Demo</Text>
-              <Button onPress={this.handleButtonClick} block >
-                <Text>Click Me</Text>
-              </Button>
-              <Button onPress={this.handleShowNotification} secondary rounded block>
-                <Text>Show Notification</Text>
-              </Button>
-              <FormInput onChangeText={this.handleTextChange} label="Name" />
-              <FormTextArea color="#0F0" onChangeText={this.handleTextChange} label="Description" />
-              <FormPicker color="#00F" onValueChange={this.handleValueChange} selectedValue={this.state.pickerValue} label="Number" data={this.pickerData} />
-              <FormDatePicker onDateChange={this.handleDateChange} color="#F0F" label="Date" />
-              <Card title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} />
-              <ListItem title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} >
-                <ListItem title="Heading" onPress={this.handleShowNotification} description="Description" />
-              </ListItem>
-              <CardList data={this.listData} horizontal />
-              <ListView data={this.listData} />
-              <Form formElements={this.formElements} />
-            </View>
+            <PillView pillHeaders={this.pillHeaders} pillScenes={this.pillScenes} />
           </ScrollView>
           <Notification ref={"alert"} />
           {/* <FloatingButton onPress={this.handleShowNotification} image={require("./assets/images/accessibility.png")} /> */}
