@@ -82,7 +82,7 @@ export default class App extends Component {
           <ScrollView>
             <View style={styles.innerContainer}>
               <Text size={"h4"} bold >Alom Elements Demo</Text>
-              <Button onPress={this.handleButtonClick} color="#486c86" block>
+              <Button onPress={this.handleButtonClick} block >
                 <Text>Click Me</Text>
               </Button>
               <Button onPress={this.handleShowNotification} secondary rounded block>
@@ -102,7 +102,6 @@ export default class App extends Component {
             </View>
           </ScrollView>
           <Notification ref={"alert"} />
-          <FloatingButton actions={this.actions} />
           {/* <FloatingButton onPress={this.handleShowNotification} image={require("./assets/images/accessibility.png")} /> */}
         </View>
         <TabBar>
@@ -123,6 +122,7 @@ export default class App extends Component {
             <Text>Settings</Text>
           </TabItem>
         </TabBar>
+        <FloatingButton actions={this.actions} tabs />
       </View>
     );
   }
