@@ -10,9 +10,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView, Alert } from 'react-native';
 import {
-  Button, FormInput, FormTextArea, FormPicker, Picker, FormDatePicker, Text,
+  Button, FormInput, FormTextArea, FormPicker, Icon, FormDatePicker, Text,
   FloatingButton, NotificationBarManager, Notification, Card, ListItem,
-  CardList, ListView, Form
+  CardList, ListView, Form,
+  NavBar, NavBarRight, NavBarLeft, NavBarBody, NavBarButton
 } from "react-native-atom-elements";
 
 export default class App extends Component {
@@ -61,34 +62,48 @@ export default class App extends Component {
   }
 
   render() {
-
     return (
       <View style={styles.container}>
-        <ScrollView>
-          <View style={styles.innerContainer}>
-            <Text size={"h4"} bold >Alom Elements Demo</Text>
-            <Button onPress={this.handleButtonClick} color="#486c86" block>
-              <Text>Click Me</Text>
-            </Button>
-            <Button onPress={this.handleShowNotification} secondary rounded block>
-              <Text>Show Notification</Text>
-            </Button>
-            <FormInput onChangeText={this.handleTextChange} label="Name" />
-            <FormTextArea color="#0F0" onChangeText={this.handleTextChange} label="Description" />
-            <FormPicker color="#00F" onValueChange={this.handleValueChange} selectedValue={this.state.pickerValue} label="Number" data={this.pickerData} />
-            <FormDatePicker onDateChange={this.handleDateChange} color="#F0F" label="Date" />
-            <Card title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} />
-            <ListItem title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} >
-              <ListItem title="Heading" onPress={this.handleShowNotification} description="Description" />
-            </ListItem>
-            <CardList data={this.listData} horizontal />
-            <ListView data={this.listData} />
-            <Form formElements={this.formElements} />
-          </View>
-        </ScrollView>
-        <Notification ref={"alert"} />
-        <FloatingButton actions={this.actions} />
-        {/* <FloatingButton onPress={this.handleShowNotification} image={require("./assets/images/accessibility.png")} /> */}
+        <NavBar>
+          <NavBarLeft>
+            <NavBarButton type="drawer" />
+          </NavBarLeft>
+          <NavBarBody>
+            <Text>Title</Text>
+          </NavBarBody>
+          <NavBarRight>
+            <NavBarButton onPress={this.handleShowNotification} >
+              <Icon name="heart" />
+            </NavBarButton>
+          </NavBarRight>
+        </NavBar>
+        <View style={styles.container}>
+          <ScrollView>
+            <View style={styles.innerContainer}>
+              <Text size={"h4"} bold >Alom Elements Demo</Text>
+              <Button onPress={this.handleButtonClick} color="#486c86" block>
+                <Text>Click Me</Text>
+              </Button>
+              <Button onPress={this.handleShowNotification} secondary rounded block>
+                <Text>Show Notification</Text>
+              </Button>
+              <FormInput onChangeText={this.handleTextChange} label="Name" />
+              <FormTextArea color="#0F0" onChangeText={this.handleTextChange} label="Description" />
+              <FormPicker color="#00F" onValueChange={this.handleValueChange} selectedValue={this.state.pickerValue} label="Number" data={this.pickerData} />
+              <FormDatePicker onDateChange={this.handleDateChange} color="#F0F" label="Date" />
+              <Card title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} />
+              <ListItem title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} >
+                <ListItem title="Heading" onPress={this.handleShowNotification} description="Description" />
+              </ListItem>
+              <CardList data={this.listData} horizontal />
+              <ListView data={this.listData} />
+              <Form formElements={this.formElements} />
+            </View>
+          </ScrollView>
+          <Notification ref={"alert"} />
+          <FloatingButton actions={this.actions} />
+          {/* <FloatingButton onPress={this.handleShowNotification} image={require("./assets/images/accessibility.png")} /> */}
+        </View>
       </View>
     );
   }
