@@ -16,6 +16,7 @@ import {
   NavBar, NavBarRight, NavBarLeft, NavBarBody, NavBarButton,
   TabBar, TabItem, PillView
 } from "react-native-atom-elements";
+import Home from "./src/HomePage";
 
 export default class App extends Component {
 
@@ -46,7 +47,7 @@ export default class App extends Component {
   ];
 
   pillScenes = [
-    { scene: this.renderMainView() },
+    { scene: <Home /> },
     { scene: <CardList data={this.listData} /> },
     { scene: <ListView data={this.listData} /> },
     { scene: <View style={styles.innerContainer}><Form formElements={this.formElements} /></View> },
@@ -76,34 +77,11 @@ export default class App extends Component {
     NotificationBarManager.unregisterMessageBar();
   }
 
-  renderMainView() {
-    return (
-      <View style={styles.innerContainer}>
-        <Text size={"h4"} bold >Atom Elements Demo</Text>
-        <Button onPress={this.handleButtonClick} block >
-          <Text>Click Me</Text>
-        </Button>
-        <Button onPress={this.handleShowNotification} secondary rounded block>
-          <Text>Show Notification</Text>
-        </Button>
-        <FormInput onChangeText={this.handleTextChange} label="Name" />
-        <FormTextArea color="#0F0" onChangeText={this.handleTextChange} label="Description" />
-        <FormDatePicker onDateChange={this.handleDateChange} color="#F0F" label="Date" />
-        <Card title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} />
-        <ListItem title="Heading" description="Description" image={require("./assets/images/scenery.jpg")} >
-          <ListItem title="Heading" onPress={this.handleShowNotification} description="Description" />
-        </ListItem>
-      </View>
-    );
-  }
-
   render() {
     return (
       <View style={styles.container}>
         <NavBar>
-          <NavBarLeft>
-            <NavBarButton type="drawer" />
-          </NavBarLeft>
+          <NavBarLeft/>
           <NavBarBody>
             <Text>Title</Text>
           </NavBarBody>
@@ -114,9 +92,7 @@ export default class App extends Component {
           </NavBarRight>
         </NavBar>
         <View style={styles.container}>
-          <ScrollView>
-            <PillView pillHeaders={this.pillHeaders} pillScenes={this.pillScenes} />
-          </ScrollView>
+          <PillView pillHeaders={this.pillHeaders} pillScenes={this.pillScenes} />
           <Notification ref={"alert"} />
           {/* <FloatingButton onPress={this.handleShowNotification} image={require("./assets/images/accessibility.png")} /> */}
         </View>
