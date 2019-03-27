@@ -8,14 +8,13 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Alert } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import {
-  Button, FormInput, FormTextArea, FormPicker, Icon, FormDatePicker, Text,
-  FloatingButton, NotificationBarManager, Notification, Card, ListItem,
+  Text, Icon, FloatingButton, NotificationBarManager, Notification,
   CardList, ListView, Form,
   NavBar, NavBarRight, NavBarLeft, NavBarBody, NavBarButton,
   TabBar, TabItem, PillView
-} from "react-native-atom-elements";
+} from "firstBorn";
 import Home from "./src/HomePage";
 
 export default class App extends Component {
@@ -81,7 +80,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <NavBar>
-          <NavBarLeft/>
+          <NavBarLeft />
           <NavBarBody>
             <Text>Title</Text>
           </NavBarBody>

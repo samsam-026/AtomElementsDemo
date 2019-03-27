@@ -10,7 +10,7 @@
     "prop-types": "^15.7.2",
     "react": "16.6.3",
     "react-native": "0.58.5",
-    "react-native-atom-elements": "file:/node_modules/react-native-atom-elements",
+    "firstBorn": "file:/node_modules/firstBorn",
     "react-native-vector-icons": "^6.3.0"
   },
   "devDependencies": {
